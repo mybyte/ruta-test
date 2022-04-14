@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -32,6 +32,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import de.miba.TestProjectMain.RutaMention;
+import de.miba.types.SomeType;
 
 public class RutaTest {
 
@@ -40,12 +41,15 @@ public class RutaTest {
 
 		JCas jcas = JCasFactory.createJCas();
 		jcas.setDocumentText("This text is processed by Ruta.");
-		AnalysisEngineDescription aed = AnalysisEngineFactory.createEngineDescriptionFromPath("target/generated-sources/ruta/descriptor/de/miba/TestProjectMainRutaAnnotator.xml");
+		AnalysisEngineDescription aed = AnalysisEngineFactory.createEngineDescriptionFromPath(
+				"target/generated-sources/ruta/descriptor/de/miba/TestProjectMainRutaAnnotator.xml");
 		SimplePipeline.runPipeline(jcas, aed);
-		
+
 		Collection<RutaMention> select = JCasUtil.select(jcas, RutaMention.class);
 		Assert.assertEquals(1, select.size());
 		Assert.assertEquals("Ruta", select.iterator().next().getCoveredText());
+
+		Assert.assertEquals(1, JCasUtil.select(jcas, SomeType.class).size());
 	}
 
 }

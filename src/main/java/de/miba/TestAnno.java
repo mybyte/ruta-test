@@ -10,7 +10,8 @@ public class TestAnno extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
-		new SomeType(aJCas, 0, 1);
+
+		new SomeType(aJCas, 0, 1).addToIndexes();
 	}
 
 }

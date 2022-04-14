@@ -1,1 +1,0 @@
-classpath*:de/miba/TestProjectMainRutaTypeSystem.xml
