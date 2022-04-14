@@ -17,8 +17,11 @@
 PACKAGE de.miba;
 
 UIMAFIT de.miba.TestAnno;
+TYPESYSTEM descriptor.typeSystemDescriptor;
 
 WORDLIST dictionary = 'generated.mtwl';
 
 DECLARE RutaMention;
 TRIE("Ruta.txt"=RutaMention, dictionary, true, 4, false, 0, ".,-/");
+
+EXEC(TestAnno);
